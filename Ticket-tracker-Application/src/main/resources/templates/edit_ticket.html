@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--made use of bootstrap using w3 bootstrap-->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Ticket Tracking Application</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md bg-primary navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="http://localhost:8080/tickets">Ticket
+			Tracking Application</a> <a th:href="@{/tickets}" class="navbar-brand">Tickets</a>
+		<a th:href="@{/tickets/new}" class="navbar-brand">New Ticket</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Edit Ticket</h1>
+				<div class="card-body">
+					<form th:action="@{/tickets/{id} (id=${ticket.id})}" th:object="${ticket}" method="POST">
+						<div class="form-group">
+							<label>Ticket Title</label> <input type="text" name="ticketTitle" th:field="*{ticketTitle}"
+								class="form-control" placeholder="Title of Ticket" />
+						</div>
+
+						<div class="form-group">
+							<label>Ticket Short Description</label> <input type="text" name="ticketShortDescription"
+								th:field="*{ticketShortDescription}" class="form-control"
+								placeholder="Short Description" />
+						</div>
+						<div class="form-group">
+							<label>Ticket Date</label> <input type="text" name="ticketCreatedOn"
+								th:field="*{ticketCreatedOn}" class="form-control" placeholder="Ticket Date" />
+						</div>
+
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
